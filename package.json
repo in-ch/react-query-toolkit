@@ -1,0 +1,76 @@
+{
+  "name": "useSchedule",
+  "description": "Extend useQuery with cron-based scheduling for periodic API calls in React. Perfect for fetching data at regular intervals with ease.",
+  "version": "1.0.0",
+  "type": "module",
+  "private": "false",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/in-ch/useSchedule.git"
+  },
+  "scripts": {
+    "test": "pnpm recursive run test",
+    "build": "pnpm recursive run build",
+    "prepare": "husky",
+    "bench": "pnpm vitest bench"
+  },
+  "keywords": [
+    "React",
+    "React Hook",
+    "Next",
+    "Nextjs",
+    "Axios",
+    "useQuery",
+    "Query Scheduling",
+    "Cron Jobs",
+    "API Polling",
+    "Data Fetching",
+    "Periodic API Calls",
+    "Automatic Refetch",
+    "Background Fetching",
+    "React Query Extension",
+    "Custom Hook",
+    "Timed Fetch",
+    "Interval API Calls",
+    "Real-time Data"
+  ],
+  "author": "in-ch",
+  "maintainers": [
+    {
+      "name": "in-ch",
+      "email": "sxin2949@naver.com"
+    }
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-typescript": "^7.26.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@eslint/js": "^9.22.0",
+    "@in-ch/setup": "^0.0.7",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.10",
+    "commitlint": "^19.8.0",
+    "eslint-plugin-jsdoc": "^50.6.8",
+    "eslint-plugin-no-for-of-array": "^0.1.0",
+    "eslint-plugin-vue": "^10.0.0",
+    "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-sort-re-exports": "^0.1.0",
+    "rollup": "^4.36.0",
+    "ts-jest": "^29.2.6",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.1",
+    "vitest": "^3.0.9"
+  }
+}
