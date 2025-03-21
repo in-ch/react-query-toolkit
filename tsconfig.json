@@ -13,6 +13,10 @@
           "es2017"
       ],
       "baseUrl": ".",
+      "outDir": "./dist",
+      "paths": {
+        "@/*": ["./*"]
+      }
   },
   "exclude": ["__tests__", "node_modules", "dist"]
 }

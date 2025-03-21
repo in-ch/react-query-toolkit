@@ -1,0 +1,25 @@
+{
+  "name": "use-schedule",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "private": "false",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "in-ch",
+  "maintainers": [
+    {
+      "name": "in-ch",
+      "email": "sxin2949@naver.com"
+    }
+  ],
+  "keywords": [],
+  "license": "ISC",
+  "peerDependencies": {
+    "@tanstack/react-query": ">=5.0.0",
+    "react": ">=16.8.0",
+    "cron-parser": ">=5.0.0"
+  }
+}
