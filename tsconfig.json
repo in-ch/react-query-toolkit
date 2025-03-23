@@ -10,10 +10,11 @@
     "lib": ["es6", "dom", "es2017"],
     "baseUrl": ".",
     "outDir": "./dist",
+    "types": ["jest", "@testing-library/jest-dom"],
     "paths": {
       "@/*": ["./*"]
     },
     "jsx": "react-jsx"
   },
-  "exclude": ["__tests__", "node_modules", "dist"]
+  "exclude": ["**/*.test.*", "node_modules", "dist"]
 }
