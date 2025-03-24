@@ -6,7 +6,9 @@
   "private": "false",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit"
   },
   "author": "in-ch",
   "maintainers": [
@@ -22,5 +24,15 @@
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
     "cron-parser": ">=5.0.0"
+  },
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }
