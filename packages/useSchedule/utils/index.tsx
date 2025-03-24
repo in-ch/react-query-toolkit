@@ -5,10 +5,9 @@ export function createQueryClient(config?: QueryClientConfig): QueryClient {
   return new QueryClient(config);
 }
 
-let queryKeyCount = 0;
-export function queryKey(): Array<string> {
-  queryKeyCount++;
-  return [`query_${queryKeyCount}`];
+export function queryKey(): string[] {
+  const randomString = `${Date.now()}_${Math.random().toString(36).substring(2, 10)}`;
+  return [`query_${randomString}`];
 }
 
 export function renderWithClient(client: QueryClient, ui: React.ReactElement): ReturnType<typeof render> {
@@ -17,12 +16,11 @@ export function renderWithClient(client: QueryClient, ui: React.ReactElement): R
     ...result,
     rerender: (rerenderUi: React.ReactElement) =>
       rerender(<QueryClientProvider client={client}>{rerenderUi}</QueryClientProvider>),
-  } as any;
+  };
 }
-11;
 
 export function sleep(timeout: number): Promise<void> {
-  return new Promise((resolve, _reject) => {
+  return new Promise(resolve => {
     setTimeout(resolve, timeout);
   });
 }
