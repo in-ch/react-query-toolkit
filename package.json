@@ -11,7 +11,10 @@
     "test": "pnpm recursive run test",
     "build": "pnpm recursive run build",
     "prepare": "husky",
-    "bench": "pnpm vitest bench"
+    "bench": "pnpm vitest bench",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "publish": "changeset publish"
   },
   "keywords": [
     "React",
@@ -47,6 +50,7 @@
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.26.0",
     "@babel/runtime": "^7.26.10",
+    "@changesets/cli": "^2.28.1",
     "@commitlint/config-conventional": "^19.8.0",
     "@eslint/js": "^9.22.0",
     "@in-ch/setup": "^0.0.7",
