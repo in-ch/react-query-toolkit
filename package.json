@@ -2,7 +2,6 @@
   "description": "Extend useQuery with cron-based scheduling for periodic API calls in React. Perfect for fetching data at regular intervals with ease.",
   "version": "1.0.0",
   "type": "module",
-  "private": "false",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/in-ch/useSchedule.git"
