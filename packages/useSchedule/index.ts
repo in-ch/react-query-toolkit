@@ -1,6 +1,6 @@
-import CronExpressionParser from 'cron-parser';
 import { useCallback, useEffect } from 'react';
 import { QueryFunctionContext, useQuery, UseQueryResult } from '@tanstack/react-query';
+import parseCronInterval from './cron';
 import { BatchOptions } from './types';
 
 /**
@@ -55,19 +55,16 @@ export default function useSchedule<TQueryFnData = unknown, TError = unknown, TD
     if (!cron) {
       return;
     }
-    const interval = CronExpressionParser.parse(cron);
-    let timer: NodeJS.Timeout;
-    const scheduleNextFetch = () => {
-      const now = Date.now();
-      const next = interval.next().getTime();
-      const timeout = Math.max(next - now, 0);
-      timer = setTimeout(() => {
-        queryResult.refetch();
-        scheduleNextFetch();
-      }, timeout);
-    };
-    scheduleNextFetch();
-    return () => clearTimeout(timer);
+    const intervalMs = parseCronInterval(cron);
+    if (intervalMs === null) {
+      return;
+    }
+    queryResult.refetch();
+    const timer = setInterval(() => {
+      queryResult.refetch();
+    }, intervalMs);
+
+    return () => clearInterval(timer);
   }, [cron, queryResult]);
   return queryResult;
 }
