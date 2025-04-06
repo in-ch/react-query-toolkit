@@ -62,7 +62,7 @@ describe('useSchedule', () => {
     expect(rendered.getByTestId('data').textContent).toBe('delayed data');
   });
 
-  it('refetches on cron schedule (every second)', async () => {
+  it('refetches on schedule (every second)', async () => {
     const mockQueryFn = vi.fn(async () => 'delayed data');
     const key = queryKey();
     function Page() {
@@ -70,7 +70,7 @@ describe('useSchedule', () => {
         queryKey: key,
         queryFn: mockQueryFn,
         delay: 1000,
-        cron: '* * * * * *',
+        interval: 1000,
       });
       return (
         <div>
@@ -85,11 +85,10 @@ describe('useSchedule', () => {
     expect(rendered.getByTestId('data-refetches').textContent).toBe('loading');
     expect(mockQueryFn).not.toHaveBeenCalled();
 
-    await waitFor(() => expect(mockQueryFn).toHaveBeenCalledTimes(1), { timeout: 1001 });
-    await waitFor(() => expect(mockQueryFn).toHaveBeenCalledTimes(1), { timeout: 1100 });
-    await waitFor(() => expect(mockQueryFn).toHaveBeenCalledTimes(2), { timeout: 2001 });
-    await waitFor(() => expect(mockQueryFn).toHaveBeenCalledTimes(3), { timeout: 3001 });
-    await waitFor(() => expect(mockQueryFn).toHaveBeenCalledTimes(3), { timeout: 3999 });
+    await waitFor(() => expect(mockQueryFn).toHaveBeenCalledTimes(0), { timeout: 1001 });
+    await waitFor(() => expect(mockQueryFn).toHaveBeenCalledTimes(1), { timeout: 2001 });
+    await waitFor(() => expect(mockQueryFn).toHaveBeenCalledTimes(1), { timeout: 2999 });
+    await waitFor(() => expect(mockQueryFn).toHaveBeenCalledTimes(2), { timeout: 3000 });
 
     expect(rendered.getByTestId('status-refetches').textContent).toBe('success');
     expect(rendered.getByTestId('data-refetches').textContent).toBe('delayed data');

@@ -5,7 +5,7 @@ type BatchOptions<TQueryFnData, TError, TData> = Omit<
   'queryFn' | 'refetchInterval' | 'refetchOnWindowFocus' | 'refetchOnMount'
 > & {
   delay?: number;
-  cron?: string;
+  interval?: number;
   queryFn: QueryFunction<TQueryFnData>;
 };
 
