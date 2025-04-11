@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
 import React from 'react';
-import { QueryCache, useQuery } from '@tanstack/react-query';
-import { render, waitFor } from '@testing-library/react';
-import useSchedule from '../index';
+import { QueryCache } from '@tanstack/react-query';
+import { waitFor } from '@testing-library/react';
+import { useSchedule } from '../index';
 import { createQueryClient, queryKey, renderWithClient, sleep } from '../utils';
 
 describe('useSchedule', () => {
@@ -11,15 +11,10 @@ describe('useSchedule', () => {
     queryCache,
   });
 
-  it('@testing-library rendering test', async () => {
-    const result = render(<div>Hello @in-ch</div>);
-    result.getByText('Hello @in-ch');
-  });
-
   it('should allow to set default data value', async () => {
     const key = queryKey();
     function Page() {
-      const { data = 'default' } = useQuery({
+      const { data = 'default' } = useSchedule({
         queryKey: key,
         queryFn: async () => {
           await sleep(10);
