@@ -142,19 +142,6 @@ importers:
         specifier: ^5.71.10
         version: 5.71.10(react@18.2.0)
 
-  packages/useSchedule:
-    dependencies:
-      react:
-        specifier: '>=16.8.0'
-        version: 18.2.0
-      react-dom:
-        specifier: '>=16.8.0'
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@tanstack/react-query':
-        specifier: ^5.71.10
-        version: 5.71.10(react@18.2.0)
-
 packages:
 
   '@adobe/css-tools@4.4.2':
