@@ -55,4 +55,19 @@ describe('useInterval unit test', () => {
     vi.advanceTimersByTime(1000);
     expect(mockAlert).toHaveBeenCalledTimes(7);
   });
+
+  it('always calls the latest callback (no stale closure)', () => {
+    let count = 0;
+    const callback = vi.fn(() => {
+      window.alert(`called-${count}`);
+    });
+
+    const { rerender } = renderHook(() => useInterval(callback, 500));
+
+    count = 1;
+    rerender();
+
+    vi.advanceTimersByTime(500);
+    expect(mockAlert).toHaveBeenCalledWith('called-1');
+  });
 });
