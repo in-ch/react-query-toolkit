@@ -1,2 +1,9 @@
-export { default as useSchedule } from './hooks/use-schedule';
+export { default as useCronQuery } from './hooks/use-cron-query';
+export { default as useDebouncedQuery } from './hooks/use-debounced-query';
+export { default as useDependentQuery } from './hooks/use-dependencies-query';
+export { default as useInterval } from './hooks/use-interval';
+export { default as useLazyQuery } from './hooks/use-lazy-query';
 export { default as usePaginatedQuery } from './hooks/use-paginated-query';
+export { default as useParallelQuery } from './hooks/use-parallel-query';
+export { default as usePrefetchQuery } from './hooks/use-prefetch-query';
+export { default as useSchedule } from './hooks/use-schedule';
