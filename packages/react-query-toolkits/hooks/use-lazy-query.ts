@@ -24,11 +24,14 @@ type LazyQueryOptions<TQueryFnData, TError, TData> = Omit<
  * ```tsx
  * const {
  *   data,
+ *   refetch,
  *   isLoading,
  * } = useLazyQuery({
  *   queryKey: ['users'],
  *   queryFn: (page, limit) => fetchUsers(page, limit),
  * });
+ * 
+ * refetch();
  * ```
  */
 export default function useLazyQuery<TQueryFnData = unknown, TError = unknown, TData = TQueryFnData>({
