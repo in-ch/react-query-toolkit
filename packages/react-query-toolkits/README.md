@@ -54,12 +54,12 @@ const { data, isLoading, page, setPage, limit, setLimit } = useDebouncedQuery({
 
 ---
 
-### 🔗 `useDependentQuery`
+### 🔗 `useDependeniesQuery`
 
 Execute queries in sequence where each depends on the result of the previous one.
 
 ```typescript
-import { useDependentQuery } from 'react-query-toolkits';
+import { useDependeniesQuery } from 'react-query-toolkits';
 
 const { data, isLoading } = useDependenciesQuery({
   queryKey: ['user'],
