@@ -7,3 +7,4 @@ export { default as usePaginatedQuery } from './hooks/use-paginated-query';
 export { default as useParallelQuery } from './hooks/use-parallel-query';
 export { default as usePrefetchQuery } from './hooks/use-prefetch-query';
 export { default as useSchedule } from './hooks/use-schedule';
+export { default as useStatefulQuery, hasRefetch } from './hooks/use-stateful-query';
