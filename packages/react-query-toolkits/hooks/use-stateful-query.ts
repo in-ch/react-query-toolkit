@@ -102,8 +102,8 @@ export default function useStatefulQuery<TQueryFnData = unknown, TError = unknow
  * }
  * ```
  */
-export function hasRefetch<T>(
-  result: Omit<UseQueryResult<T>, 'refetch'> | UseQueryResult<T>
-): result is UseQueryResult<T> {
+export function hasRefetch<TData, TError = unknown>(
+  result: Omit<UseQueryResult<TData, TError>, 'refetch'> | UseQueryResult<TData, TError>
+): result is UseQueryResult<TData, TError> {
   return 'refetch' in result;
 }
