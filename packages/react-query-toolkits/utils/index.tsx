@@ -24,3 +24,10 @@ export function sleep(timeout: number): Promise<void> {
     setTimeout(resolve, timeout);
   });
 }
+
+export const createWrapper = () => {
+  const queryClient = new QueryClient();
+  return ({ children }: { children: React.ReactNode }) => (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
+};
