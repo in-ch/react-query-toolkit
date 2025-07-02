@@ -13,7 +13,8 @@
     "outDir": "./dist",
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@/*": ["./packages/react-query-toolkits/*"]
+      "@/*": ["./packages/react-query-toolkits/*"],
+      "@inchand/*": ["./packages/inchand/*"]
     },
     "jsx": "react-jsx"
   },
