@@ -1,5 +1,10 @@
 {
-    "extends": "../../tsconfig.json",
-    "exclude": ["**/*.test.*"],
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.test.*", "**/*.bench.*"]
 }
-  

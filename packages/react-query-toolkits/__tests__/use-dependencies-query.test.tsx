@@ -1,9 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
-import React from 'react';
+import useDependenciesQuery from '@/hooks/use-dependencies-query';
+import { createQueryClient, queryKey } from '@/utils';
 import { QueryCache, QueryClientProvider } from '@tanstack/react-query';
 import { render, screen } from '@testing-library/react';
-import useDependenciesQuery from '../hooks/use-dependencies-query';
-import { createQueryClient, queryKey } from '../utils';
 
 describe('useDependenciesQuery', () => {
   const queryCache = new QueryCache();

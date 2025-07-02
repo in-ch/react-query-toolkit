@@ -1,6 +1,6 @@
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import useInterval from '@/hooks/use-interval';
 import { renderHook } from '@testing-library/react';
-import useInterval from '../hooks/use-interval';
 
 describe('useInterval unit test', () => {
   const mockAlert = vi.fn();

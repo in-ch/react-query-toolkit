@@ -1,9 +1,8 @@
 import { vi } from 'vitest';
-import React from 'react';
+import useNoCacheQuery from '@/hooks/use-no-cache-query';
+import { createQueryClient, queryKey, renderWithClient } from '@/utils';
 import { QueryCache } from '@tanstack/react-query';
 import { waitFor } from '@testing-library/react';
-import useNoCacheQuery from '../hooks/use-no-cache-query';
-import { createQueryClient, queryKey, renderWithClient } from '../utils';
 
 describe('useNoCacheQuery', () => {
   const queryCache = new QueryCache();

@@ -1,9 +1,9 @@
 import { vi } from 'vitest';
 import React from 'react';
+import usePaginatedQuery from '@/hooks/use-paginated-query';
+import { createQueryClient, queryKey, renderWithClient } from '@/utils';
 import { QueryCache } from '@tanstack/react-query';
 import { waitFor } from '@testing-library/react';
-import usePaginatedQuery from '../hooks/use-paginated-query';
-import { createQueryClient, queryKey, renderWithClient } from '../utils';
 
 const mockData = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);
 
