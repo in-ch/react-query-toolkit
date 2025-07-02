@@ -1,44 +1,45 @@
 import { bench, describe } from 'vitest';
-import { QueryCache, useQuery } from '@tanstack/react-query';
-import { waitFor } from '@testing-library/react';
-import useNoCacheQuery from '../../hooks/use-no-cache-query';
-import { createQueryClient, queryKey, renderWithClient } from '../../utils';
+import useNoCacheQuery from '@/hooks/use-no-cache-query';
+import { createWrapper, fetchMock } from '@/utils';
+import { useQuery } from '@tanstack/react-query';
+import { renderHook } from '@testing-library/react';
 
-describe('react-query hook benchmark', () => {
-  const queryCache = new QueryCache();
-  const queryClient = createQueryClient({ queryCache });
-  const sleep = (ms: number) => new Promise(res => setTimeout(res, ms));
+describe('[Benchmark] useNoCacheQuery vs useQuery', () => {
+  bench('useQuery', async () => {
+    const page = 1;
+    const limit = 10;
 
-  const mockQueryFn = async () => {
-    await sleep(10);
-    return ['data'];
-  };
+    const { result, unmount } = renderHook(
+      () =>
+        useQuery({
+          queryKey: ['test', page, limit],
+          queryFn: () => fetchMock(page, limit),
+        }),
+      {
+        wrapper: createWrapper(),
+      }
+    );
 
-  const key = queryKey();
-
-  bench('useQuery with cache', async () => {
-    function Page() {
-      const { data } = useQuery({
-        queryKey: key,
-        queryFn: mockQueryFn,
-      });
-      return <div>{data}</div>;
-    }
-    const rendered = renderWithClient(queryClient, <Page />);
-    await waitFor(() => rendered.getByText('data'));
-    rendered.unmount();
+    await result.current.refetch();
+    unmount();
   });
 
-  bench('useNoCacheQuery (no cache)', async () => {
-    function Page() {
-      const { data } = useNoCacheQuery({
-        queryKey: [...key, Math.random()],
-        queryFn: mockQueryFn,
-      });
-      return <div>{data}</div>;
-    }
-    const rendered = renderWithClient(queryClient, <Page />);
-    await waitFor(() => rendered.getByText('data'));
-    rendered.unmount();
+  bench('useNoCacheQuery', async () => {
+    const page = 1;
+    const limit = 10;
+
+    const { result, unmount } = renderHook(
+      () =>
+        useNoCacheQuery({
+          queryKey: ['test', page, limit],
+          queryFn: () => fetchMock(page, limit),
+        }),
+      {
+        wrapper: createWrapper(),
+      }
+    );
+
+    await result.current.refetch();
+    unmount();
   });
 });

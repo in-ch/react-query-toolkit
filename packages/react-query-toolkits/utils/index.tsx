@@ -31,3 +31,11 @@ export const createWrapper = () => {
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 };
+
+export const fetchMock = async (page: number, limit: number) => {
+  return new Promise(resolve =>
+    setTimeout(() => {
+      resolve(Array.from({ length: limit }, (_, i) => i + (page - 1) * limit));
+    }, 10)
+  );
+};

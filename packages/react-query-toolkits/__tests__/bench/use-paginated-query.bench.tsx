@@ -1,18 +1,10 @@
 import { bench, describe } from 'vitest';
+import usePaginatedQuery from '@/hooks/use-paginated-query';
+import { createWrapper, fetchMock } from '@/utils';
 import { useQuery } from '@tanstack/react-query';
-import { renderHook } from '@testing-library/react-hooks';
-import usePaginatedQuery from '../../hooks/use-paginated-query';
-import { createWrapper } from '../../utils';
+import { renderHook } from '@testing-library/react';
 
-const fetchMock = async (page: number, limit: number) => {
-  return new Promise(resolve =>
-    setTimeout(() => {
-      resolve(Array.from({ length: limit }, (_, i) => i + (page - 1) * limit));
-    }, 10)
-  );
-};
-
-describe('Benchmark usePaginatedQuery vs useQuery', () => {
+describe('[Benchmark] usePaginatedQuery vs useQuery', () => {
   bench('usePaginatedQuery', async () => {
     const { result, unmount } = renderHook(
       () =>
