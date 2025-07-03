@@ -11,8 +11,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@react-query-toolkits': path.resolve(__dirname, '.'),
-      src: path.resolve(__dirname, './src'),
+      '@react-query-toolkits': path.resolve(__dirname),
     },
   },
 });
