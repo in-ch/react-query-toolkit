@@ -1,6 +1,6 @@
 import { bench, describe } from 'vitest';
-import useNoCacheQuery from '@/hooks/use-no-cache-query';
-import { createWrapper, fetchMock } from '@/utils';
+import useNoCacheQuery from '@react-query-toolkits/hooks/use-no-cache-query';
+import { createWrapper, fetchMock } from '@react-query-toolkits/utils';
 import { useQuery } from '@tanstack/react-query';
 import { renderHook } from '@testing-library/react';
 

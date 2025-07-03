@@ -1,6 +1,6 @@
 import { bench, describe } from 'vitest';
-import usePaginatedQuery from '@/hooks/use-paginated-query';
-import { createWrapper, fetchMock } from '@/utils';
+import usePaginatedQuery from '@react-query-toolkits/hooks/use-paginated-query';
+import { createWrapper, fetchMock } from '@react-query-toolkits/utils';
 import { useQuery } from '@tanstack/react-query';
 import { renderHook } from '@testing-library/react';
 
