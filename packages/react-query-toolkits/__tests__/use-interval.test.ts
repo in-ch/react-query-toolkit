@@ -1,5 +1,5 @@
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
-import useInterval from '@/hooks/use-interval';
+import useInterval from '@react-query-toolkits/hooks/use-interval';
 import { renderHook } from '@testing-library/react';
 
 describe('useInterval unit test', () => {

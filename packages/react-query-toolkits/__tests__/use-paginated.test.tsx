@@ -1,7 +1,6 @@
 import { vi } from 'vitest';
-import React from 'react';
-import usePaginatedQuery from '@/hooks/use-paginated-query';
-import { createQueryClient, queryKey, renderWithClient } from '@/utils';
+import usePaginatedQuery from '@react-query-toolkits/hooks/use-paginated-query';
+import { createQueryClient, queryKey, renderWithClient } from '@react-query-toolkits/utils';
 import { QueryCache } from '@tanstack/react-query';
 import { waitFor } from '@testing-library/react';
 

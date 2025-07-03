@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import useLazyQuery from '@/hooks/use-lazy-query';
+import useLazyQuery from '@react-query-toolkits/hooks/use-lazy-query';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render, screen } from '@testing-library/react';
 import { fireEvent, waitFor } from '@testing-library/react';

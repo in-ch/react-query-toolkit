@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import React, { useState } from 'react';
-import useStatefulQuery, { hasRefetch } from '@/hooks/use-stateful-query';
+import useStatefulQuery, { hasRefetch } from '@react-query-toolkits/hooks/use-stateful-query';
+import { createQueryClient, queryKey, renderWithClient, sleep } from '@react-query-toolkits/utils';
 import { QueryCache } from '@tanstack/react-query';
 import { waitFor } from '@testing-library/react';
 import { fireEvent } from '@testing-library/react';
-import { createQueryClient, queryKey, renderWithClient, sleep } from '../utils';
 
 const mockConsoleWarn = vi.spyOn(console, 'warn').mockImplementation(() => {});
 

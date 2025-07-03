@@ -4,7 +4,7 @@ export default defineConfig({
   clean: true,
   dts: true,
   entry: ['./index.ts'],
-  external: ['useSchedule/package.json'],
+  external: ['react-query-toolkits/package.json'],
   format: ['esm', 'cjs'],
   sourcemap: true,
   minify: true,

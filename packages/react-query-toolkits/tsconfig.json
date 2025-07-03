@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@react-query-toolkits/*": ["./*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.test.*", "**/*.bench.*"]

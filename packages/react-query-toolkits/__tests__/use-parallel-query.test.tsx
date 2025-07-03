@@ -1,6 +1,6 @@
 import { vi } from 'vitest';
-import useParallelQuery from '@/hooks/use-parallel-query';
-import { createQueryClient, queryKey, renderWithClient } from '@/utils';
+import useParallelQuery from '@react-query-toolkits/hooks/use-parallel-query';
+import { createQueryClient, queryKey, renderWithClient } from '@react-query-toolkits/utils';
 import { QueryCache } from '@tanstack/react-query';
 import { waitFor } from '@testing-library/react';
 

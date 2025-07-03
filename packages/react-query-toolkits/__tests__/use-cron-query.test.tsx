@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import React, { useState } from 'react';
-import useCronQuery from '@/hooks/use-cron-query';
+import useCronQuery from '@react-query-toolkits/hooks/use-cron-query';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { waitFor } from '@testing-library/react';
 import { render, screen } from '@testing-library/react';

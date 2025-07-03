@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
-import useSchedule from '@/hooks/use-schedule';
-import { createQueryClient, queryKey, renderWithClient, sleep } from '@/utils';
+import useSchedule from '@react-query-toolkits/hooks/use-schedule';
+import { createQueryClient, queryKey, renderWithClient, sleep } from '@react-query-toolkits/utils';
 import { QueryCache } from '@tanstack/react-query';
 import { waitFor } from '@testing-library/react';
 
