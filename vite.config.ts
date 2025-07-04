@@ -7,7 +7,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.join(__dirname, 'packages/react-query-toolkits'),
+      '@react-query-toolkits': path.resolve(__dirname, 'packages/react-query-toolkits'),
     },
   },
 });
