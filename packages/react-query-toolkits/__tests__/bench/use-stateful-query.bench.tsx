@@ -1,20 +1,20 @@
 import { bench, describe } from 'vitest';
-import useDebouncedQuery from '@react-query-toolkits/hooks/use-debounced-query';
+import useStatefulQuery from '@react-query-toolkits/hooks/use-stateful-query';
 import { createWrapper, fetchMock } from '@react-query-toolkits/utils';
 import { useQuery } from '@tanstack/react-query';
 import { act, renderHook } from '@testing-library/react';
 
-describe('[Benchmark] useDebouncedQuery vs useQuery', () => {
-  bench('useDebouncedQuery', async () => {
+describe('[Benchmark] useStatefulQuery vs useQuery', () => {
+  bench('useStatefulQuery', async () => {
     let deps = 'initial';
 
     const { rerender, unmount } = renderHook(
       () =>
-        useDebouncedQuery({
-          queryKey: ['test', deps],
+        useStatefulQuery({
+          queryKey: ['test'],
           queryFn: () => fetchMock(1, 10),
-          deps: [deps],
-          delay: 0,
+          stateValues: [deps],
+          hideRefetch: true,
         }),
       {
         wrapper: createWrapper(),
