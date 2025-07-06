@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useStatefulQuery, { hasRefetch } from '@react-query-toolkits/hooks/use-stateful-query';
 import { createQueryClient, queryKey, renderWithClient, sleep } from '@react-query-toolkits/utils';
 import { QueryCache } from '@tanstack/react-query';

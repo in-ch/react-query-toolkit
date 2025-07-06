@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useDebouncedQuery from '@react-query-toolkits/hooks/use-debounced-query';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { waitFor } from '@testing-library/react';
