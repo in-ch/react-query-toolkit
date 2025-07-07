@@ -18,6 +18,10 @@
       "email": "sxin2949@naver.com"
     }
   ],
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
   "license": "ISC",
   "exports": {
     "import": "./dist/index.js",

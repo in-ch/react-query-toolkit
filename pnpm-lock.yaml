@@ -132,7 +132,14 @@ importers:
         specifier: ^3.0.9
         version: 3.0.9(@types/node@22.13.11)(jiti@2.4.2)(jsdom@20.0.3)(terser@5.39.0)
 
-  packages/inchand: {}
+  packages/inchand:
+    dependencies:
+      react:
+        specifier: '>=16.8.0'
+        version: 18.2.0
+      react-dom:
+        specifier: '>=16.8.0'
+        version: 18.2.0(react@18.2.0)
 
   packages/react-query-toolkits:
     dependencies:
