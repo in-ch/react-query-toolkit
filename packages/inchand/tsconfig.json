@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@inchand/*": ["./*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.test.*", "**/*.bench.*"]

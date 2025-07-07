@@ -1,4 +1,4 @@
-import type { Store } from '@inchand/createStore/type';
+import { Store } from '@inchand/createStore/type';
 
 /**
  * Create a Global Store with the given initial state.
