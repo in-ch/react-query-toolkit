@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/in-ch/react-query-toolkit/compare/v1.1.0...v2.2.0) (2025-07-07)
+
+### Features
+
+- use-no-cache-query ([ee16d90](https://github.com/in-ch/react-query-toolkit/commit/ee16d904f1fdd6dbea81b8aa8bf7314dd11bb3c8))
+- use-stateful-query ([edc45de](https://github.com/in-ch/react-query-toolkit/commit/edc45de25340fde4e70a08b4a33c700bffb752ee))
+- **use-stateful-query:** add hasRefetch ([9cd8a1f](https://github.com/in-ch/react-query-toolkit/commit/9cd8a1fa8bf894862054537773485bc6551f15eb))
+
+### Bug Fixes
+
+- add missing exports in Babel file ([17c558a](https://github.com/in-ch/react-query-toolkit/commit/17c558a755d3e5b2444951db872ebd69369c304e))
+- **vite.config:** correct alias path for react-query-toolkits in root and package config ([989ffee](https://github.com/in-ch/react-query-toolkit/commit/989ffeeeadbae3e25d1fc1dd89234fb2c6996939))
+
 ## [2.1.0](https://github.com/in-ch/useSchedule/compare/v2.0.0...v2.1.0) (2025-05-24)
 
 ### Features
