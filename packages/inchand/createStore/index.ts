@@ -1,4 +1,5 @@
 import { Store } from '@inchand/createStore/type';
+import isDeepEqual from '@inchand/utils/deep-equal';
 
 /**
  * Create a Global Store with the given initial state.
@@ -25,7 +26,8 @@ export default function createStore<T>(initialState: T): Store<T> {
 
   const setState = (partial: Partial<T> | ((state: T) => Partial<T>)) => {
     const nextState = typeof partial === 'function' ? partial(state) : partial;
-    if (nextState !== state) {
+
+    if (!isDeepEqual(nextState, state)) {
       state = { ...state, ...nextState };
       listeners.forEach(listener => listener());
     }
