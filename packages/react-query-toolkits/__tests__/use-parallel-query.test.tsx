@@ -137,4 +137,38 @@ describe('useParallelQuery', () => {
       expect(rendered.getByTestId('data').textContent).toBe('success');
     });
   });
+
+  it('should handle type inference correctly with multiple queries', async () => {
+    const key = queryKey();
+    const mockQueryFn = vi.fn(async () => 'success');
+    const deffientQurtyCode = vi.fn(async () => 100);
+
+    const mockQueries = [
+      {
+        queryKey: [key],
+        queryFn: mockQueryFn,
+      },
+      {
+        queryKey: [key],
+        queryFn: deffientQurtyCode,
+      },
+    ];
+
+    function Page() {
+      const { isSuccess, data } = useParallelQuery(mockQueries);
+      return (
+        <div>
+          <div data-testid="success">{isSuccess ? 'success' : 'not-success'}</div>
+          <div data-testid="data">{data[0]}</div>
+        </div>
+      );
+    }
+
+    const rendered = renderWithClient(queryClient, <Page />);
+
+    await waitFor(() => {
+      expect(rendered.getByTestId('success').textContent).toBe('success');
+      expect(rendered.getByTestId('data').textContent).toBe('success');
+    });
+  });
 });
