@@ -10,13 +10,13 @@ npm install react-query-toolkits
 
 # or
 
-yarn install @tanstack/react-query
+yarn add @tanstack/react-query
 yarn add react-query-toolkits
 
 # or
 
 pnpm install @tanstack/react-query
-pnpm add react-query-toolkits
+pnpm install react-query-toolkits
 ```
 
 ## Usage
