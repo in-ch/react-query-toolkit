@@ -171,6 +171,19 @@ const { data, refetch } = useSchedule({
 
 ---
 
+### 🌵 useNoCacheQuery
+
+A custom hook that provides a way to no cache data manually.
+
+```typescript
+const { data, isLoading } = useNoCacheQuery({
+  queryKey: ['user', userId],
+  queryFn: () => fetchUser(userId),
+});
+```
+
+---
+
 ## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
