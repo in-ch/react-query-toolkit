@@ -184,6 +184,26 @@ const { data, isLoading } = useNoCacheQuery({
 
 ---
 
+### 😵‍💫 useStatefulQuery
+
+A custom hook that manages queries with state-dependent keys.
+When queryKey includes state values, refetch is disabled to prevent
+
+```typescript
+const [searchTerm, setSearchTerm] = useState('');
+const [filters, setFilters] = useState({});
+
+const { data, isLoading } = useStatefulQuery({
+  queryKey: ['search', searchTerm, filters],
+  queryFn: () => searchAPI(searchTerm, filters),
+  stateValues: [searchTerm, filters],
+});
+ *
+setSearchTerm('new search');
+```
+
+---
+
 ## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
