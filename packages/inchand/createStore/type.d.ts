@@ -11,6 +11,14 @@ interface Store<T> {
    * Subscribes to state changes.
    */
   subscribe: (listener: () => void) => () => void;
+  /**
+   *  Restore the state of the store to its previous value.
+   */
+  redo: () => void;
+  /**
+   * Restore the state of the store to its next value.
+   */
+  undo: () => void;
 }
 
 export type { Store };

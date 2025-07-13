@@ -13,23 +13,27 @@ import isDeepEqual from '@inchand/utils/deep-equal';
  * @example
  * ```ts
  * const { getState, setState } = createStore({ count: 0 });
- * store.getState(); // { count: 0 }
- * store.setState({ count: 1 });
- * store.getState(); // { count: 1 }
+ * getState(); // { count: 0 }
+ * setState({ count: 1 });
+ * getState(); // { count: 1 }
  * ```
  */
 export default function createStore<T>(initialState: T): Store<T> {
   let state = initialState;
+  let history: T[] = [state];
+  let historyIndex = 0;
   const listeners = new Set<() => void>();
 
   const getState = () => state;
-
   const setState = (partial: Partial<T> | ((state: T) => Partial<T>)) => {
     const nextState = typeof partial === 'function' ? partial(state) : partial;
 
     if (!isDeepEqual(nextState, state)) {
       state = { ...state, ...nextState };
       listeners.forEach(listener => listener());
+      history.push(state);
+      historyIndex++;
+      historyIndex = history.length - 1;
     }
   };
 
@@ -38,5 +42,44 @@ export default function createStore<T>(initialState: T): Store<T> {
     return () => listeners.delete(listener);
   };
 
-  return { getState, setState, subscribe };
+  /**
+   * @example
+   * Restore the state of the store to its previous value.
+   *
+   * ```typescript
+   * const { undo } = createStore({ count: 0 });
+   * setState({ count: 1 });
+   * undo();
+   * getState(); // { count: 0 }
+   * ```
+   */
+  const undo = () => {
+    if (historyIndex > 0) {
+      historyIndex--;
+      state = history[historyIndex];
+      listeners.forEach(listener => listener());
+    }
+  };
+
+  /**
+   * @example
+   * Restore the state of the store to its next value.
+   *
+   * ```typescript
+   * const { undo } = createStore({ count: 0 });
+   * setState({ count: 1 });
+   * undo();
+   * redo();
+   * getState(); // { count: 1 }
+   * ```
+   */
+  const redo = () => {
+    if (historyIndex < history.length - 1) {
+      historyIndex++;
+      state = history[historyIndex];
+      listeners.forEach(listener => listener());
+    }
+  };
+
+  return { getState, setState, subscribe, redo, undo };
 }
