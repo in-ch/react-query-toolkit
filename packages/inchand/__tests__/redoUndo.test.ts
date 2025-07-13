@@ -33,6 +33,16 @@ describe('createStore (redo & undo)', () => {
     expect(getState()).toEqual({ count: 1 });
   });
 
+  it('undo edge test case', () => {
+    const { getState, setState, undo } = createStore({ count: 0 });
+    setState({ count: 1 });
+    undo();
+    undo();
+    undo();
+
+    expect(getState()).toEqual({ count: 0 });
+  });
+
   it('should return next value (1 step)', () => {
     const { getState, setState, undo, redo } = createStore({ count: 0 });
     setState({ count: 1 });
@@ -52,5 +62,15 @@ describe('createStore (redo & undo)', () => {
     redo();
 
     expect(getState()).toEqual({ count: 2 });
+  });
+
+  it('redo edge test case', () => {
+    const { getState, setState, undo, redo } = createStore({ count: 0 });
+    setState({ count: 1 });
+    undo();
+    redo();
+    redo();
+
+    expect(getState()).toEqual({ count: 1 });
   });
 });
