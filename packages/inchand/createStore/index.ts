@@ -81,5 +81,5 @@ export default function createStore<T>(initialState: T): Store<T> {
     }
   };
 
-  return { getState, setState, subscribe, redo, undo };
+  return { getState, setState, subscribe, undo, redo };
 }

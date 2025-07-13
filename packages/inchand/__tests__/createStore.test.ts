@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import createStore from '@inchand/createStore';
 
-describe('createStore', () => {
+describe('createStore (default)', () => {
   it('should initialize with the given state', () => {
     const { getState } = createStore({ count: 0 });
     expect(getState()).toEqual({ count: 0 });

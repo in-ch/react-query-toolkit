@@ -14,11 +14,11 @@ interface Store<T> {
   /**
    *  Restore the state of the store to its previous value.
    */
-  redo: () => void;
+  undo: () => void;
   /**
    * Restore the state of the store to its next value.
    */
-  undo: () => void;
+  redo: () => void;
 }
 
 export type { Store };
