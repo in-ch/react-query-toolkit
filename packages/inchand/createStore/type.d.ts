@@ -19,6 +19,14 @@ interface Store<T> {
    * Restore the state of the store to its next value.
    */
   redo: () => void;
+  /**
+   * Get the history index of the store.
+   */
+  getHistoryIndex: () => number;
+  /**
+   * Clear the history of the store.
+   */
+  clearHistory: () => void;
 }
 
 export type { Store };

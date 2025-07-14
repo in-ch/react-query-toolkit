@@ -81,5 +81,32 @@ export default function createStore<T>(initialState: T): Store<T> {
     }
   };
 
-  return { getState, setState, subscribe, undo, redo };
+  /**
+   * @example
+   * Get the history index of the store.
+   *
+   * ```typescript
+   * const { getHistoryIndex } = createStore({ count: 0 });
+   * getHistoryIndex(); // 0
+   * ```
+   */
+  const getHistoryIndex = () => historyIndex;
+
+  /**
+   * @example
+   * Clear the history of the store.
+   *
+   * ```typescript
+   * const { clearHistory } = createStore({ count: 0 });
+   * setState({ count: 1 });
+   * clearHistory();
+   * getState(); // { count: 0 }
+   * ```
+   */
+  const clearHistory = () => {
+    history = [state];
+    historyIndex = 0;
+  };
+
+  return { getState, setState, subscribe, undo, redo, getHistoryIndex, clearHistory };
 }
