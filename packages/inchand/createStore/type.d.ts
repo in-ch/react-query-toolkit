@@ -27,6 +27,10 @@ interface Store<T> {
    * Clear the history of the store.
    */
   clearHistory: () => void;
+  /**
+   * Ensure persistence with localstorage
+   */
+  persist: (key: string) => void;
 }
 
 export type { Store };

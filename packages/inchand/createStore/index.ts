@@ -43,9 +43,9 @@ export default function createStore<T>(initialState: T): Store<T> {
   };
 
   /**
-   * @example
    * Restore the state of the store to its previous value.
    *
+   * @example
    * ```typescript
    * const { undo } = createStore({ count: 0 });
    * setState({ count: 1 });
@@ -62,9 +62,9 @@ export default function createStore<T>(initialState: T): Store<T> {
   };
 
   /**
-   * @example
    * Restore the state of the store to its next value.
    *
+   * @example
    * ```typescript
    * const { undo } = createStore({ count: 0 });
    * setState({ count: 1 });
@@ -82,9 +82,9 @@ export default function createStore<T>(initialState: T): Store<T> {
   };
 
   /**
-   * @example
    * Get the history index of the store.
    *
+   * @example
    * ```typescript
    * const { getHistoryIndex } = createStore({ count: 0 });
    * getHistoryIndex(); // 0
@@ -93,9 +93,9 @@ export default function createStore<T>(initialState: T): Store<T> {
   const getHistoryIndex = () => historyIndex;
 
   /**
-   * @example
    * Clear the history of the store.
    *
+   * @example
    * ```typescript
    * const { clearHistory } = createStore({ count: 0 });
    * setState({ count: 1 });
@@ -108,5 +108,25 @@ export default function createStore<T>(initialState: T): Store<T> {
     historyIndex = 0;
   };
 
-  return { getState, setState, subscribe, undo, redo, getHistoryIndex, clearHistory };
+  /**
+   * Ensure persistence with localstorage
+   *
+   * @param {string} key key value
+   * @returns {void}
+   *
+   * @example
+   * ```typescript
+   * const store = createStore({ count: 0 });
+   *
+   * store.setState({ count: 5 });
+   * store.persist('my-app');
+   *
+   * store.rehydrate('my-app');
+   * ```
+   */
+  const persist = (key: string): void => {
+    localStorage.setItem(key, JSON.stringify(state));
+  };
+
+  return { getState, setState, subscribe, undo, redo, getHistoryIndex, clearHistory, persist };
 }
