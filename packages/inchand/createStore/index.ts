@@ -116,17 +116,44 @@ export default function createStore<T>(initialState: T): Store<T> {
    *
    * @example
    * ```typescript
-   * const store = createStore({ count: 0 });
+   * const { setState, persist, rehydrate } = createStore({ count: 0 });
    *
-   * store.setState({ count: 5 });
-   * store.persist('my-app');
+   * setState({ count: 5 });
+   * persist('my-app');
    *
-   * store.rehydrate('my-app');
+   * rehydrate('my-app');
    * ```
    */
   const persist = (key: string): void => {
     localStorage.setItem(key, JSON.stringify(state));
   };
 
-  return { getState, setState, subscribe, undo, redo, getHistoryIndex, clearHistory, persist };
+  /**
+   * Rehydrate value from localStorage
+   *
+   * @param {string} key key value
+   * @returns {void}
+   *
+   * @example
+   * ```typescript
+   * const { setState, persist, rehydrate } = createStore({ count: 0 });
+   *
+   * setState({ count: 5 });
+   * persist('my-app');
+   *
+   * rehydrate('my-app');
+   * ```
+   */
+  const rehydrate = (key: string): void => {
+    const saved = localStorage.getItem(key);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      state = parsed;
+      history.push(state);
+      historyIndex = history.length - 1;
+      listeners.forEach(listener => listener());
+    }
+  };
+
+  return { getState, setState, subscribe, undo, redo, getHistoryIndex, clearHistory, persist, rehydrate };
 }

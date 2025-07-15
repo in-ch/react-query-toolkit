@@ -31,6 +31,10 @@ interface Store<T> {
    * Ensure persistence with localstorage
    */
   persist: (key: string) => void;
+  /**
+   * Rehydrate value from localStorage
+   */
+  rehydrate: (key: string) => void;
 }
 
 export type { Store };
