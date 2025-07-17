@@ -1,5 +1,6 @@
-import { useSyncExternalStore } from 'react';
+import { useRef, useSyncExternalStore } from 'react';
 import { Store } from '@inchand/createStore/type';
+import isDeepEqual from '@inchand/utils/deep-equal';
 
 /**
  * React hooks that select and subscribe to a specific status in the store.
@@ -23,11 +24,37 @@ import { Store } from '@inchand/createStore/type';
  * ```
  */
 export default function useStore<T, R>(store: Store<T>, selector: (state: T) => R): R {
-  const state = useSyncExternalStore(
-    store.subscribe,
-    () => selector(store.getState()),
-    () => selector(store.getState())
-  );
+  const previousValueRef = useRef<R>();
+  const hasInitializedRef = useRef(false);
+
+  const areValuesEqual = (a: R, b: R): boolean => {
+    if (a === b) return true;
+
+    if (typeof a === 'object' && typeof b === 'object' && a !== null && b !== null) {
+      return isDeepEqual(a as object, b as object);
+    }
+
+    return false;
+  };
+
+  const getSnapshot = () => {
+    const newValue = selector(store.getState());
+
+    if (!hasInitializedRef.current) {
+      hasInitializedRef.current = true;
+      previousValueRef.current = newValue;
+      return newValue;
+    }
+
+    if (!areValuesEqual(previousValueRef.current as R, newValue)) {
+      previousValueRef.current = newValue;
+      return newValue;
+    }
+
+    return previousValueRef.current;
+  };
+
+  const state = useSyncExternalStore(store.subscribe, getSnapshot, getSnapshot);
 
   return state;
 }
