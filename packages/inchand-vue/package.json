@@ -1,0 +1,40 @@
+{
+  "name": "inchand/vue",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "in-ch",
+  "maintainers": [
+    {
+      "name": "in-ch",
+      "email": "sxin2949@naver.com"
+    }
+  ],
+  "peerDependencies": {
+    "vue": ">=3.0.0",
+    "inchand": ">=1.0.0"
+  },
+  "devDependencies": {
+    "vue": "^3.0.0",
+    "inchand": "workspace:*"
+  },
+  "license": "ISC",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
