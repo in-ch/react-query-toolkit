@@ -1,5 +1,5 @@
 {
-  "name": "@inchand/vue",
+  "name": "@inchand/angular",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -19,11 +19,11 @@
     }
   ],
   "peerDependencies": {
-    "vue": ">=3.0.0",
+    "angular": ">15.0.0",
     "inchand": ">=1.0.0"
   },
   "devDependencies": {
-    "vue": "^3.0.0",
+    "angular": "^15.0.0",
     "inchand": "workspace:*"
   },
   "license": "ISC",
