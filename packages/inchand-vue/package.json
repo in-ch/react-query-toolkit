@@ -19,12 +19,16 @@
     }
   ],
   "peerDependencies": {
-    "vue": ">=3.0.0",
-    "inchand": ">=1.0.0"
+    "inchand": ">=1.0.0",
+    "vue": ">=3.0.0"
   },
   "devDependencies": {
-    "vue": "^3.0.0",
-    "inchand": "workspace:*"
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/test-utils": "^2.4.0",
+    "inchand": "workspace:*",
+    "jsdom": "^22.0.0",
+    "vitest": "^0.34.0",
+    "vue": "^3.0.0"
   },
   "license": "ISC",
   "exports": {
