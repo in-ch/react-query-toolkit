@@ -1,5 +1,5 @@
-import isDeepEqual, { Store } from 'inchand';
-import { onUnmounted, ref, Ref } from 'vue';
+import { deepEqual, Store } from 'inchand';
+import { onUnmounted, ref } from 'vue';
 
 /**
  * Vue composable that selects and subscribes to a specific status in the store.
@@ -23,7 +23,7 @@ import { onUnmounted, ref, Ref } from 'vue';
  * const increasePopulation = useVueStore(useBearStore, state => state.increasePopulation);
  * ```
  */
-export default function useVueStore<T, R>(store: Store<T>, selector: (state: T) => R): Ref<R> {
+export default function useVueStore<T, R>(store: Store<T>, selector: (state: T) => R) {
   // Vue reactive reference to hold the selected state
   const selectedState = ref<R>(selector(store.getState()));
 
@@ -34,7 +34,7 @@ export default function useVueStore<T, R>(store: Store<T>, selector: (state: T) 
     if (a === b) return true;
 
     if (typeof a === 'object' && typeof b === 'object' && a !== null && b !== null) {
-      return isDeepEqual(a as object, b as object);
+      return deepEqual(a as object, b as object);
     }
 
     return false;
