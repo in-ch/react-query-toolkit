@@ -20,11 +20,13 @@
   ],
   "peerDependencies": {
     "@angular/core": ">15.0.0",
-    "inchand": ">=1.0.0"
+    "inchand": ">=1.0.0",
+    "rxjs": ">7.0.0"
   },
   "devDependencies": {
     "@angular/core": "^15.0.0",
-    "inchand": "workspace:*"
+    "inchand": "workspace:*",
+    "rxjs": "^7.8.2"
   },
   "license": "ISC",
   "exports": {
