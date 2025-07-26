@@ -149,6 +149,9 @@ importers:
       inchand:
         specifier: workspace:*
         version: link:../inchand
+      rxjs:
+        specifier: ^7.8.2
+        version: 7.8.2
 
   packages/inchand-vue:
     devDependencies:
@@ -164,9 +167,6 @@ importers:
       jsdom:
         specifier: ^22.0.0
         version: 22.1.0
-      vite:
-        specifier: ^7.0.5
-        version: 7.0.5(@types/node@22.13.11)(jiti@2.4.2)(terser@5.39.0)
       vitest:
         specifier: ^0.34.0
         version: 0.34.6(jsdom@22.1.0)(terser@5.39.0)
@@ -7628,7 +7628,7 @@ snapshots:
       '@humanfs/node': 0.16.6
       '@humanwhocodes/module-importer': 1.0.1
       '@humanwhocodes/retry': 0.4.2
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       '@types/json-schema': 7.0.15
       ajv: 6.12.6
       chalk: 4.1.2
