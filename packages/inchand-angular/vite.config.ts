@@ -1,9 +1,9 @@
 import { defineConfig } from 'vitest/config';
 import path from 'path';
-import react from '@vitejs/plugin-react';
+import angular from '@analogjs/vite-plugin-angular';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [angular() as any],
   test: {
     environment: 'jsdom',
     globals: true,
