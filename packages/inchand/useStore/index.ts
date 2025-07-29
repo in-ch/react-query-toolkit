@@ -1,5 +1,5 @@
 import { useRef, useSyncExternalStore } from 'react';
-import { Store } from '@inchand/createStore/type';
+import { Store, UseStoreOptions } from '@inchand/createStore/type';
 import isDeepEqual from '@inchand/utils/deep-equal';
 
 /**
@@ -23,7 +23,7 @@ import isDeepEqual from '@inchand/utils/deep-equal';
  * const increasePopulation = useStore(useBearStore, state => state.increasePopulation);
  * ```
  */
-export default function useStore<T, R>(store: Store<T>, selector: (state: T) => R): R {
+export default function useStore<T, R>(store: Store<T>, selector: (state: T) => R, options?: UseStoreOptions): R {
   const previousValueRef = useRef<R>();
   const hasInitializedRef = useRef(false);
 
@@ -43,10 +43,18 @@ export default function useStore<T, R>(store: Store<T>, selector: (state: T) => 
     if (!hasInitializedRef.current) {
       hasInitializedRef.current = true;
       previousValueRef.current = newValue;
+      if (options?.debugMode) {
+        console.log(`[useStore] initialized:`, newValue);
+      }
+
       return newValue;
     }
 
     if (!areValuesEqual(previousValueRef.current as R, newValue)) {
+      if (options?.debugMode) {
+        console.log(`[useStore] prev value:`, previousValueRef.current);
+        console.log(`[useStore] next value:`, newValue);
+      }
       previousValueRef.current = newValue;
       return newValue;
     }

@@ -37,4 +37,11 @@ interface Store<T> {
   rehydrate: (key: string) => void;
 }
 
-export type { Store };
+interface UseStoreOptions {
+  /**
+   * Console Debug log when this value is `true`
+   */
+  debugMode?: boolean;
+}
+
+export type { Store, UseStoreOptions };
