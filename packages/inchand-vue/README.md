@@ -22,22 +22,19 @@ Install the `inchand` core store & `inchand-vue` package:
 ### npm
 
 ```bash
-npm install inchand
-npm install inchand-vue
+npm install inchand inchand-vue
 ```
 
 ### yarn
 
 ```bash
-yarn add inchand
-yarn add inchand-vue
+yarn add inchand inchand-vue
 ```
 
 ### pnpm
 
 ```bash
-pnpm install inchand
-pnpm install inchand-vue
+pnpm install inchand inchand-vue
 ```
 
 ## Usage with Vue
