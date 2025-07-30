@@ -44,7 +44,7 @@ export default function useStore<T, R>(store: Store<T>, selector: (state: T) => 
       hasInitializedRef.current = true;
       previousValueRef.current = newValue;
       if (options?.debugMode) {
-        console.log(`[useStore] initialized:`, newValue);
+        console.debug(`[useStore] initialized:`, newValue);
       }
 
       return newValue;
@@ -52,8 +52,8 @@ export default function useStore<T, R>(store: Store<T>, selector: (state: T) => 
 
     if (!areValuesEqual(previousValueRef.current as R, newValue)) {
       if (options?.debugMode) {
-        console.log(`[useStore] prev value:`, previousValueRef.current);
-        console.log(`[useStore] next value:`, newValue);
+        console.debug(`[useStore] prev value:`, previousValueRef.current);
+        console.debug(`[useStore] next value:`, newValue);
       }
       previousValueRef.current = newValue;
       return newValue;
