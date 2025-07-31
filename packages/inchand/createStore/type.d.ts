@@ -42,6 +42,16 @@ interface UseStoreOptions {
    * Console Debug log when this value is `true`
    */
   debugMode?: boolean;
+
+  /**
+   * Console log when this value is `true`
+   */
+  consoleMode?: boolean;
+
+  /**
+   * Console error when this value is `true`
+   */
+  errorMode?: boolean;
 }
 
 export type { Store, UseStoreOptions };

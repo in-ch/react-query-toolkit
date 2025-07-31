@@ -1,6 +1,7 @@
 import { useRef, useSyncExternalStore } from 'react';
 import { Store, UseStoreOptions } from '@inchand/createStore/type';
 import isDeepEqual from '@inchand/utils/deep-equal';
+import { logStateChange } from '@inchand/utils/log';
 
 /**
  * React hooks that select and subscribe to a specific status in the store.
@@ -43,18 +44,13 @@ export default function useStore<T, R>(store: Store<T>, selector: (state: T) => 
     if (!hasInitializedRef.current) {
       hasInitializedRef.current = true;
       previousValueRef.current = newValue;
-      if (options?.debugMode) {
-        console.debug(`[useStore] initialized:`, newValue);
-      }
+      logStateChange('initialized', undefined, newValue, options);
 
       return newValue;
     }
 
     if (!areValuesEqual(previousValueRef.current as R, newValue)) {
-      if (options?.debugMode) {
-        console.debug(`[useStore] prev value:`, previousValueRef.current);
-        console.debug(`[useStore] next value:`, newValue);
-      }
+      logStateChange('changed', previousValueRef.current, newValue, options);
       previousValueRef.current = newValue;
       return newValue;
     }
