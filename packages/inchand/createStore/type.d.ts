@@ -35,6 +35,10 @@ interface Store<T> {
    * Rehydrate value from localStorage
    */
   rehydrate: (key: string) => void;
+  /**
+   * Replace All State
+   */
+  replaceAllState: (newState: T) => void;
 }
 
 interface UseStoreOptions {

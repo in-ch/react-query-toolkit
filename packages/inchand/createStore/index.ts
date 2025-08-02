@@ -155,5 +155,37 @@ export default function createStore<T>(initialState: T): Store<T> {
     }
   };
 
-  return { getState, setState, subscribe, undo, redo, getHistoryIndex, clearHistory, persist, rehydrate };
+  /**
+   * Replace All State
+   *
+   * @param {T} state state value
+   * @returns {void}
+   *
+   * @example
+   * ```typescript
+   * const store = createStore({ count: 1, name: 'Mike' });
+   * store.replaceState({ count: 2, name: 'Nick' });
+   * ```
+   */
+  const replaceAllState = (newState: T): void => {
+    if (!isDeepEqual(newState, state)) {
+      state = newState;
+      listeners.forEach(listener => listener());
+      history.push(state);
+      historyIndex = history.length - 1;
+    }
+  };
+
+  return {
+    getState,
+    setState,
+    subscribe,
+    undo,
+    redo,
+    getHistoryIndex,
+    clearHistory,
+    persist,
+    rehydrate,
+    replaceAllState,
+  };
 }
