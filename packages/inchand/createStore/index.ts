@@ -164,7 +164,7 @@ export default function createStore<T>(initialState: T): Store<T> {
    * @example
    * ```typescript
    * const store = createStore({ count: 1, name: 'Mike' });
-   * store.replaceState({ count: 2, name: 'Nick' });
+   * store.replaceAllState({ count: 2, name: 'Nick' });
    * ```
    */
   const replaceAllState = (newState: T): void => {
