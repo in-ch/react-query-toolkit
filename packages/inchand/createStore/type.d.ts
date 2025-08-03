@@ -39,6 +39,10 @@ interface Store<T> {
    * Replace All State
    */
   replaceAllState: (newState: Partial<T>) => void;
+  /**
+   * Restore the state to its initial state.
+   */
+  restoreState: () => void;
 }
 
 interface UseStoreOptions {
