@@ -189,11 +189,28 @@ export default function createStore<T>(initialState: T): Store<T> {
    * restoreState();
    * ```
    */
-  const restoreState = () => {
+  const restoreState = (): void => {
     state = initialState;
     listeners.forEach(listener => listener());
     history = [state];
     historyIndex = 0;
+  };
+
+  /**
+   * Reset the state to its initial state.
+   *
+   * @returns {void}
+   *
+   * @example
+   * ```typescript
+   * const { resetState, setState } = createStore({ count: 0 });
+   *
+   * setState({ count: 1 }});
+   * resetState();
+   * ```
+   */
+  const resetState = (): void => {
+    restoreState();
   };
 
   return {
@@ -208,5 +225,6 @@ export default function createStore<T>(initialState: T): Store<T> {
     rehydrate,
     replaceAllState,
     restoreState,
+    resetState,
   };
 }

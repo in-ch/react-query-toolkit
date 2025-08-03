@@ -43,6 +43,10 @@ interface Store<T> {
    * Restore the state to its initial state.
    */
   restoreState: () => void;
+  /**
+   * Reset the state to its initial state.
+   */
+  resetState: () => void;
 }
 
 interface UseStoreOptions {
