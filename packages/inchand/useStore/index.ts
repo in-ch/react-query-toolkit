@@ -44,13 +44,13 @@ export default function useStore<T, R>(store: Store<T>, selector: (state: T) => 
     if (!hasInitializedRef.current) {
       hasInitializedRef.current = true;
       previousValueRef.current = newValue;
-      logStateChange('initialized', undefined, newValue, options);
+      logStateChange('initialized', `${newValue}`, options);
 
       return newValue;
     }
 
     if (!areValuesEqual(previousValueRef.current as R, newValue)) {
-      logStateChange('changed', previousValueRef.current, newValue, options);
+      logStateChange('changed', `${previousValueRef.current} -> ${newValue}`, options);
       previousValueRef.current = newValue;
       return newValue;
     }

@@ -28,13 +28,12 @@ const log = (level: LogLevel, options: UseStoreOptions | undefined, ...args: unk
  * Attach label
  *
  * @param {string} label label message
- * @param {R | undefined} prev prev state
- * @param {R} next next state
+ * @param {string} message message
  * @returns {void}
  */
-const logStateChange = <R>(label: string, prev: R | undefined, next: R, options: UseStoreOptions | undefined) => {
+const logStateChange = <R>(label: string, message: string, options: UseStoreOptions | undefined) => {
   (['log', 'debug', 'error'] as LogLevel[]).forEach(level => {
-    log(level, options, `[useStore] ${label}:`, level === 'log' ? next : prev, next);
+    log(level, options, `[useStore] ${label}:`, message);
   });
 };
 
