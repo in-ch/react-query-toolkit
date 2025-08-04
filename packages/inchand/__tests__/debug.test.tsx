@@ -45,8 +45,7 @@ describe('debug', () => {
       store.setState({ count: 1 });
     });
 
-    expect(expectConsoleDebugCalledWith(consoleDebugSpy, '[useStore] prev value: 0')).toBe(true);
-    expect(expectConsoleDebugCalledWith(consoleDebugSpy, '[useStore] next value: 1')).toBe(true);
+    expect(expectConsoleDebugCalledWith(consoleDebugSpy, '[useStore] changed: 0 -> 1')).toBe(true);
     consoleDebugSpy.mockRestore();
   });
 });
