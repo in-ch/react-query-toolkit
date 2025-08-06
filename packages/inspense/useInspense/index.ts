@@ -17,7 +17,15 @@ export function useInspense<T>(
   url: string,
   fetcher: (input: RequestInfo, init?: RequestInit) => Promise<T> = url => fetch(url).then(res => res.json())
 ): { fetch: () => T } {
-  const resource = useMemo(() => fetcherWrapper(fetcher(url)), [url]);
+  const resource = useMemo(() => {
+    let promise: Promise<T> | null = null;
+    return fetcherWrapper(() => {
+      if (!promise) {
+        promise = fetcher(url);
+      }
+      return promise;
+    });
+  }, [url]);
 
   return {
     fetch: resource.fetch,

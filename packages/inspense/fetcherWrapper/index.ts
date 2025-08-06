@@ -7,25 +7,27 @@
  * @param {Promise<T>} promise - The API call or async operation to wrap.
  * @returns { fetch: () => T | void } A function that will return the result or throw while waiting.
  */
-export function fetcherWrapper<T>(promise: Promise<T>): { fetch: () => T } {
+export function fetcherWrapper<T>(getPromise: () => Promise<T>): { fetch: () => T } {
   let status = 'pending';
   let result: T;
   let error: unknown;
-
-  const suspender = promise.then(
-    r => {
-      status = 'success';
-      result = r;
-    },
-    e => {
-      status = 'error';
-      error = e;
-    }
-  );
+  let suspender: Promise<void> | null = null;
 
   return {
     fetch(): T {
       if (status === 'pending') {
+        if (!suspender) {
+          suspender = getPromise().then(
+            r => {
+              status = 'success';
+              result = r;
+            },
+            e => {
+              status = 'error';
+              error = e;
+            }
+          );
+        }
         throw suspender;
       } else if (status === 'error') {
         throw error;
