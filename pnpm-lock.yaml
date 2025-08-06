@@ -142,14 +142,13 @@ importers:
         version: 18.2.0(react@18.2.0)
 
   packages/inchand-angular:
-    dependencies:
-      '@angular/build':
-        specifier: ^20.1.3
-        version: 20.1.3(@angular/compiler-cli@20.1.3(@angular/compiler@20.1.3)(typescript@5.8.2))(@angular/compiler@20.1.3)(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.13.3))(@types/node@22.13.11)(chokidar@4.0.3)(jiti@2.4.2)(postcss@8.5.6)(terser@5.39.0)(tslib@2.8.1)(typescript@5.8.2)(vitest@0.34.6(jsdom@22.1.0)(sass@1.89.2)(terser@5.39.0))
     devDependencies:
       '@analogjs/vite-plugin-angular':
         specifier: ^1.19.1
         version: 1.19.1(@angular/build@20.1.3(@angular/compiler-cli@20.1.3(@angular/compiler@20.1.3)(typescript@5.8.2))(@angular/compiler@20.1.3)(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.13.3))(@types/node@22.13.11)(chokidar@4.0.3)(jiti@2.4.2)(postcss@8.5.6)(terser@5.39.0)(tslib@2.8.1)(typescript@5.8.2)(vitest@0.34.6(jsdom@22.1.0)(sass@1.89.2)(terser@5.39.0)))
+      '@angular/build':
+        specifier: ^20.1.3
+        version: 20.1.3(@angular/compiler-cli@20.1.3(@angular/compiler@20.1.3)(typescript@5.8.2))(@angular/compiler@20.1.3)(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.13.3))(@types/node@22.13.11)(chokidar@4.0.3)(jiti@2.4.2)(postcss@8.5.6)(terser@5.39.0)(tslib@2.8.1)(typescript@5.8.2)(vitest@0.34.6(jsdom@22.1.0)(sass@1.89.2)(terser@5.39.0))
       '@angular/compiler-cli':
         specifier: ^20.1.3
         version: 20.1.3(@angular/compiler@20.1.3)(typescript@5.8.2)
@@ -192,6 +191,21 @@ importers:
       vue:
         specifier: ^3.0.0
         version: 3.5.17(typescript@5.8.2)
+
+  packages/inspense:
+    dependencies:
+      '@types/react':
+        specifier: '>=19.0.0'
+        version: 19.1.9
+      '@types/react-dom':
+        specifier: '>=19.0.0'
+        version: 19.1.7(@types/react@19.1.9)
+      react:
+        specifier: '>=19.0.0'
+        version: 19.1.1
+      react-dom:
+        specifier: '>=19.0.0'
+        version: 19.1.1(react@19.1.1)
 
   packages/react-query-toolkits:
     dependencies:
@@ -2709,8 +2723,16 @@ packages:
   '@types/react-dom@18.2.0':
     resolution: {integrity: sha512-8yQrvS6sMpSwIovhPOwfyNf2Wz6v/B62LFSVYQ85+Rq3tLsBIG7rP5geMxaijTUxSkrO6RzN/IRuIAADYQsleA==}
 
+  '@types/react-dom@19.1.7':
+    resolution: {integrity: sha512-i5ZzwYpqjmrKenzkoLM2Ibzt6mAsM7pxB6BCIouEVVmgiqaMj1TjaK7hnA36hbW5aZv20kx7Lw6hWzPWg0Rurw==}
+    peerDependencies:
+      '@types/react': ^19.0.0
+
   '@types/react@18.2.0':
     resolution: {integrity: sha512-0FLj93y5USLHdnhIhABk83rm8XEGA7kH3cr+YUlvxoUGp1xNt/DINUMvqPxLyOQMzLmZe8i4RTHbvb8MC7NmrA==}
+
+  '@types/react@19.1.9':
+    resolution: {integrity: sha512-WmdoynAX8Stew/36uTSVMcLJJ1KRh6L3IZRx1PZ7qJtBqT3dYTgyDTx8H1qoRghErydW7xw9mSJ3wS//tCRpFA==}
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -4786,6 +4808,11 @@ packages:
     peerDependencies:
       react: ^18.2.0
 
+  react-dom@19.1.1:
+    resolution: {integrity: sha512-Dlq/5LAZgF0Gaz6yiqZCf6VCcZs1ghAJyrsu84Q/GT0gV+mCxbfmKNoGRKBYMJ8IEdGPqu49YWXD02GCknEDkw==}
+    peerDependencies:
+      react: ^19.1.1
+
   react-error-boundary@3.1.4:
     resolution: {integrity: sha512-uM9uPzZJTF6wRQORmSrvOIgt4lJ9MC1sNgEOj2XGsDTRE4kmpWxg7ENK9EWNKJRMAOY9z0MuF4yIfl6gp4sotA==}
     engines: {node: '>=10', npm: '>=6'}
@@ -4804,6 +4831,10 @@ packages:
 
   react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+    engines: {node: '>=0.10.0'}
+
+  react@19.1.1:
+    resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
     engines: {node: '>=0.10.0'}
 
   read-yaml-file@1.1.0:
@@ -4929,6 +4960,9 @@ packages:
 
   scheduler@0.23.2:
     resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
+
+  scheduler@0.26.0:
+    resolution: {integrity: sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA==}
 
   semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
@@ -8371,10 +8405,18 @@ snapshots:
     dependencies:
       '@types/react': 18.2.0
 
+  '@types/react-dom@19.1.7(@types/react@19.1.9)':
+    dependencies:
+      '@types/react': 19.1.9
+
   '@types/react@18.2.0':
     dependencies:
       '@types/prop-types': 15.7.14
       '@types/scheduler': 0.23.0
+      csstype: 3.1.3
+
+  '@types/react@19.1.9':
+    dependencies:
       csstype: 3.1.3
 
   '@types/resolve@1.20.2': {}
@@ -10182,7 +10224,7 @@ snapshots:
       jest-util: 29.7.0
       natural-compare: 1.4.0
       pretty-format: 29.7.0
-      semver: 7.7.1
+      semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
 
@@ -10471,7 +10513,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.7.1
+      semver: 7.7.2
 
   make-error@1.3.6: {}
 
@@ -10830,6 +10872,11 @@ snapshots:
       react: 18.2.0
       scheduler: 0.23.2
 
+  react-dom@19.1.1(react@19.1.1):
+    dependencies:
+      react: 19.1.1
+      scheduler: 0.26.0
+
   react-error-boundary@3.1.4(react@18.2.0):
     dependencies:
       '@babel/runtime': 7.26.10
@@ -10844,6 +10891,8 @@ snapshots:
   react@18.2.0:
     dependencies:
       loose-envify: 1.4.0
+
+  react@19.1.1: {}
 
   read-yaml-file@1.1.0:
     dependencies:
@@ -11026,6 +11075,8 @@ snapshots:
   scheduler@0.23.2:
     dependencies:
       loose-envify: 1.4.0
+
+  scheduler@0.26.0: {}
 
   semver@6.3.1: {}
 
@@ -11597,7 +11648,7 @@ snapshots:
       espree: 10.3.0
       esquery: 1.6.0
       lodash: 4.17.21
-      semver: 7.7.1
+      semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
 
