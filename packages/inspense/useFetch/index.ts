@@ -1,5 +1,7 @@
 import { use } from 'react';
 
+const cache = new Map<string, Promise<any>>();
+
 /**
  * A hook that fetches data from an API endpoint and integrates with React Suspense.
  *
@@ -27,7 +29,12 @@ export function useFetch<T>(
     }
     return res.json();
   };
-  const fetchData = () => (fetcher ?? defaultFetcher)(url);
+  const fetchData = () => {
+    if (!cache.has(url)) {
+      cache.set(url, (fetcher ?? defaultFetcher)(url));
+    }
+    return cache.get(url)!;
+  };
 
   const data = use(fetchData());
   return { data };
